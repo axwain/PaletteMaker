@@ -9,6 +9,7 @@ import {
   computeDerivedColors,
   computeShadesGrid,
   getEmptyShadesGrid,
+  loadColorDefinition,
 } from './utils';
 import { baseLabels, derivedLabels, initialColors } from './utils/constants';
 
@@ -75,7 +76,24 @@ function App() {
     copy(colorJson);
   };
 
-  const handlePaste = () => {};
+  const handlePaste = () => {
+    navigator.clipboard
+      .readText()
+      .then((text) => {
+        try {
+          const colors = loadColorDefinition(text);
+          setBaseColors(colors);
+          computeShades(colors);
+        } catch (e) {
+          throw e;
+        }
+      })
+      .catch(() => {
+        console.warn(
+          'Could not load Color Definition from pasted json, no changes made'
+        );
+      });
+  };
 
   return (
     <div className="App">
