@@ -1,11 +1,11 @@
 import { TRANSPARENT_COLOR } from './constants';
 
 type ColorArrays = {
-  baseColors: string[];
-  baseLabels: string[];
+  baseColors: readonly string[];
+  baseLabels: readonly string[];
   baseShades: { darkerGridColors: string[]; lighterGridColors: string[] };
   derivedColors: string[];
-  derivedLabels: string[];
+  derivedLabels: readonly string[];
   derivedShades: { darkerGridColors: string[]; lighterGridColors: string[] };
 };
 
@@ -20,7 +20,7 @@ function addShadesLabels(
   colorIndex: number,
   totalColors: number,
   shades: string[],
-  labels: string[],
+  labels: readonly string[],
   rows: number,
   offset = 0
 ) {
@@ -36,8 +36,8 @@ function addShadesLabels(
 
 function addLabels(
   definition: ColorDefinition,
-  colors: string[],
-  labels: string[],
+  colors: readonly string[],
+  labels: readonly string[],
   darkerShades: string[],
   lighterShades: string[]
 ) {

@@ -10,37 +10,7 @@ import {
   computeShadesGrid,
   getEmptyShadesGrid,
 } from './utils';
-
-const initialColors = [
-  '#ffffff', //white
-  '#ff0000', //red
-  '#ffff00', //yellow
-  '#00ff00', //green
-  '#00ffff', //cyan
-  '#0000ff', //blue
-  '#ff00ff', //magenta
-  '#000000', //black
-];
-
-const baseLabels = [
-  'white',
-  'red',
-  'yellow',
-  'green',
-  'cyan',
-  'blue',
-  'magenta',
-  'black',
-];
-
-const derivedLabels = [
-  'redyellow',
-  'yellowgreen',
-  'greencyan',
-  'cyanblue',
-  'bluemagenta',
-  'magentared',
-];
+import { baseLabels, derivedLabels, initialColors } from './utils/constants';
 
 const emptyShades = getEmptyShadesGrid(initialColors.length);
 const initialDerivedColors = getEmptyShadesGrid(6, 1);
@@ -69,7 +39,7 @@ function App() {
     setBaseColors(newColors);
   };
 
-  const computeShades = (colors: string[]) => {
+  const computeShades = (colors: readonly string[]) => {
     const baseShades = computeShadesGrid(colors, 6);
     setDarkerShades(baseShades.darkerGridColors);
     setLighterShades(baseShades.lighterGridColors);
