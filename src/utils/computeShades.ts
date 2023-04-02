@@ -6,7 +6,9 @@ const lowerLightnessThreshold = 0.2;
 
 export function computeShades(color: string, maxShades = 6) {
   const { lightness } = parseToHsl(color);
-  const deltaChange = 1 / (maxShades * 2 + 1);
+  // max lighter shades plus max darker shades plus the base color row
+  const totalVerticalColors = maxShades * 2 + 1;
+  const deltaChange = 1 / totalVerticalColors;
   const darkerShades: string[] = [];
   const lighterShades: string[] = [];
   let darkerLuminance = lightness;
