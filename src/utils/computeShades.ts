@@ -1,4 +1,4 @@
-import { parseToHsl, shade, tint } from 'polished';
+import { darken, lighten, parseToHsl } from 'polished';
 import { TRANSPARENT_COLOR } from './constants';
 
 const higherLightnessThreshold = 0.9;
@@ -17,13 +17,13 @@ export function computeShades(color: string, maxShades = 6) {
   for (let i = 0; i < maxShades; i++) {
     if (darkerLuminance >= lowerLightnessThreshold) {
       darkerLuminance -= deltaChange;
-      darkerShades.push(shade(deltaChange * (darkerShades.length + 1), color));
+      darkerShades.push(darken(deltaChange * (darkerShades.length + 1), color));
     }
 
     if (lighterLuminance <= higherLightnessThreshold) {
       lighterLuminance += deltaChange;
       lighterShades.unshift(
-        tint(deltaChange * (lighterShades.length + 1), color)
+        lighten(deltaChange * (lighterShades.length + 1), color)
       );
     }
   }
