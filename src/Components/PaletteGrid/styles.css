@@ -1,0 +1,14 @@
+.palette-grid {
+  display: grid;
+}
+
+.palette-grid > .color-preview {
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+}
+
+.palette-grid > .color-preview:hover {
+  border-width: 1px;
+  border-style: solid;
+}
