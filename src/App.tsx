@@ -55,6 +55,10 @@ function App() {
     }
   };
 
+  const handleClickColor = (color: string) => {
+    console.log(color);
+  };
+
   const computeShades = (colors: readonly string[]) => {
     const baseShades = computeShadesGrid(colors);
     setDarkerShades(baseShades.darkerGridColors);
@@ -158,14 +162,17 @@ function App() {
               <PaletteGrid
                 colors={lighterShades}
                 columnCount={initialColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={baseColors}
                 columnCount={baseColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={darkerShades}
                 columnCount={initialColors.length}
+                onClick={handleClickColor}
               />
             </div>
           </div>
@@ -180,14 +187,17 @@ function App() {
               <PaletteGrid
                 colors={derivedLighterShades}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={derivedColors}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
               <PaletteGrid
                 colors={derivedDarkerShades}
                 columnCount={derivedColors.length}
+                onClick={handleClickColor}
               />
             </div>
           </div>
