@@ -4,7 +4,7 @@ import { BaseColorControls } from './Components/BaseColorControls';
 import { ContrastPreview } from './Components/ContrastPreview';
 import { HeaderGrid } from './Components/GridHeader';
 import { JsonBox } from './Components/JsonBox';
-import { PaletteButtons } from './Components/PaletteButtons';
+import { PaletteControls } from './Components/PaletteControls';
 import { PaletteGrid } from './Components/PaletteGrid';
 import {
   computeColorDefinition,
@@ -34,6 +34,7 @@ const copy = (text: string) => {
 function App() {
   const [isComputed, setIsComputed] = useState(false);
   const [colorJson, setColorJson] = useState('');
+  const [clickedColor, setClickedColor] = useState(initialColors[0]);
   const [baseColors, setBaseColors] = useState([...initialColors]);
   const [loadedColors, setLoadedColors] = useState([...initialColors]);
   const [darkerShades, setDarkerShades] = useState([...emptyShades]);
@@ -56,7 +57,7 @@ function App() {
   };
 
   const handleClickColor = (color: string) => {
-    console.log(color);
+    setClickedColor(color);
   };
 
   const computeShades = (colors: readonly string[]) => {
@@ -202,7 +203,8 @@ function App() {
             </div>
           </div>
         </div>
-        <PaletteButtons
+        <PaletteControls
+          clickedColor={clickedColor}
           onComputePalette={handleComputeShades}
           onResetPalette={handleResetColors}
         />
