@@ -29,7 +29,7 @@ export function PaletteControls({
       </div>
       <div className="color-copy">
         <label className="color-label">
-          Last Color: <span className="color-value">{clickedColor}</span>
+          Clicked Color: <span className="color-value">{clickedColor}</span>
           <span
             className="color-preview"
             style={{
