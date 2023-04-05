@@ -20,13 +20,13 @@
   gap: 8px;
 }
 
-.palette-grids .palette-grid-column {
+.palette-grid-column {
   display: flex;
   flex-direction: row;
   gap: 2px;
 }
 
-.palette-grids .derived-column-header {
+.derived-column-header {
   display: none;
 }
 
@@ -59,7 +59,7 @@
     flex-direction: column;
   }
 
-  .palette-grids .derived-column-header {
+  .derived-column-header {
     display: block;
   }
 }
