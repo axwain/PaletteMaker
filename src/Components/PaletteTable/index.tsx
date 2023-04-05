@@ -5,9 +5,8 @@ import {
   initialColors,
   rowHeaders,
 } from '../../utils/constants';
-import { GridHeader } from '../GridHeader';
 import { PaletteControls } from '../PaletteControls';
-import { PaletteGrid } from '../PaletteGrid';
+import { PaletteTableColumn } from './PaletteTableColumn';
 import './styles.css';
 
 type Props = {
@@ -35,73 +34,23 @@ export function PaletteTable({
   return (
     <div>
       <div className="palette-grids">
-        <div className="palette-grid-column">
-          <GridHeader
-            alignItems="center"
-            columnCount={1}
-            headers={rowHeaders}
-            justifyContent="end"
-          />
-          <div>
-            <GridHeader
-              alignItems="end"
-              columnCount={initialColors.length}
-              headers={columnBaseHeaders}
-              justifyContent="center"
-            />
-            <div className="palette">
-              <PaletteGrid
-                colors={lighterShades}
-                columnCount={initialColors.length}
-                onClick={setClickedColor}
-              />
-              <PaletteGrid
-                colors={baseColors}
-                columnCount={baseColors.length}
-                onClick={setClickedColor}
-              />
-              <PaletteGrid
-                colors={darkerShades}
-                columnCount={initialColors.length}
-                onClick={setClickedColor}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="palette-grid-column">
-          <GridHeader
-            className="derived-column-header"
-            alignItems="center"
-            columnCount={1}
-            headers={rowHeaders}
-            justifyContent="end"
-          />
-          <div>
-            <GridHeader
-              alignItems="end"
-              columnCount={derivedColors.length}
-              headers={columnDerivedHeaders}
-              justifyContent="center"
-            />
-            <div className="palette">
-              <PaletteGrid
-                colors={derivedLighterShades}
-                columnCount={derivedColors.length}
-                onClick={setClickedColor}
-              />
-              <PaletteGrid
-                colors={derivedColors}
-                columnCount={derivedColors.length}
-                onClick={setClickedColor}
-              />
-              <PaletteGrid
-                colors={derivedDarkerShades}
-                columnCount={derivedColors.length}
-                onClick={setClickedColor}
-              />
-            </div>
-          </div>
-        </div>
+        <PaletteTableColumn
+          colors={baseColors}
+          lighterColors={lighterShades}
+          darkerColors={darkerShades}
+          columnHeaders={columnBaseHeaders}
+          rowHeaders={rowHeaders}
+          onClickedColor={setClickedColor}
+        />
+        <PaletteTableColumn
+          colors={derivedColors}
+          lighterColors={derivedLighterShades}
+          darkerColors={derivedDarkerShades}
+          columnHeaders={columnDerivedHeaders}
+          rowHeaders={rowHeaders}
+          rowHeadersClass="derived-column-header"
+          onClickedColor={setClickedColor}
+        />
       </div>
       <PaletteControls
         clickedColor={clickedColor}
